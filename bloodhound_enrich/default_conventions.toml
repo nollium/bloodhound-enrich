@@ -1,0 +1,22 @@
+version = 1
+
+[[conventions]]
+id = "ggp_tot_adm_server"
+description = "Infer local administrator access from _GGP_TOT_ADM_<hostname> groups"
+enabled = true
+confidence = "high"
+
+source_label = "Group"
+source_property = "samaccountname"
+source_regex = '^_GGP_TOT_ADM_(?P<hostname>[A-Z0-9-]+)$'
+regex_mode = "fullmatch"
+case_sensitive = false
+
+target_label = "Computer"
+target_property = "name"
+target_template = "{hostname}.{domain}"
+
+relationship = "AdminTo"
+direction = "source_to_target"
+edge_properties = { isacl = false }
+expand_group_members = true

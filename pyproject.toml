@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bloodhound-enrich"
+version = "0.1.0"
+description = "Add explicitly tagged, convention-inferred relationships to BloodHound Neo4j graphs"
+requires-python = ">=3.11"
+dependencies = ["neo4j>=5"]
+
+[project.scripts]
+bloodhound-enrich = "bloodhound_enrich.cli:main"
+
+[tool.setuptools.package-data]
+bloodhound_enrich = ["default_conventions.toml"]
